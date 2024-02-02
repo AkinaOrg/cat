@@ -1,0 +1,18 @@
+import requests
+import json
+
+response = requests.get("https://emojihub.yurace.pro/api/random")
+py_dict1 = response.json()
+print(py_dict1)
+emojis = []
+while len(emojis) < 2:
+    res = requests.get("https://emojihub.yurace.pro/api/random").json()
+    if res['category'] == "symbols":
+        emojis.append(res["htmlCode"][0])
+print(emojis)
+with open("index.html", "w", encoding="utf-8") as file:
+    file.write(" ".join(emojis))
+
+print("  ᐱ_ᐱ")
+print("(=˄.˄=)")
+print(" (')(')_/")
